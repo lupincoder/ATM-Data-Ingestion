@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS "atm" (
+    "id" INT PRIMARY KEY,
+    "dccValue" VARCHAR(255)
+);
