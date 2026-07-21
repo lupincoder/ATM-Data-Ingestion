@@ -74,7 +74,7 @@ public class BatchConfiguration {
         lineTokenizer.setDelimiter(" ");
         lineTokenizer.setStrict(false);
 
-        lineTokenizer.setNames("id", "dccValue");
+        lineTokenizer.setNames("dccValue", "timeStamp", "kioskID", "location");
 
         BeanWrapperFieldSetMapper<Atm> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
         fieldSetMapper.setTargetType(Atm.class);
