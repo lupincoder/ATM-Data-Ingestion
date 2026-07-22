@@ -18,14 +18,16 @@ public class Atm {
     private String timestamp;
     private String kioskID;
     private String location;
+    private String status;
 
     public Atm() {
     }
 
-    public Atm(String dccValue, String location, String timestamp, String kioskID) {
+    public Atm(String dccValue, String location, String timestamp, String kioskID, String status) {
         this.dccValue = dccValue;
         this.location = location;
         this.timestamp = timestamp;
         this.kioskID = kioskID;
+        this.status = status;
     }
 }

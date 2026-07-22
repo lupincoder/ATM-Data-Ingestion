@@ -28,7 +28,7 @@ public class BatchConfiguration {
     private final JobRepository jobRepo;
     private final PlatformTransactionManager platformTransactionManager;
     private final AtmRepo atmRepo;
-    
+
     @Bean
     @StepScope
     public FlatFileItemReader<Atm> itemReader() {
@@ -47,7 +47,6 @@ public class BatchConfiguration {
     @Bean
     public RepositoryItemWriter<Atm> writer() {
         RepositoryItemWriter<Atm> writer = new RepositoryItemWriter<>(atmRepo);
-//        writer.setRepository(repository);
         writer.setMethodName("save");
         return writer;
     }
@@ -76,7 +75,7 @@ public class BatchConfiguration {
         lineTokenizer.setDelimiter(" ");
         lineTokenizer.setStrict(false);
 
-        lineTokenizer.setNames("dccValue", "timeStamp", "kioskID", "location");
+        lineTokenizer.setNames("dccValue", "timeStamp", "kioskID", "location", "status");
 
         BeanWrapperFieldSetMapper<Atm> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
         fieldSetMapper.setTargetType(Atm.class);

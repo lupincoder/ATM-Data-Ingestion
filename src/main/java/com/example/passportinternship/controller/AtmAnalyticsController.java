@@ -52,4 +52,12 @@ public class AtmAnalyticsController {
                 ResponseEntity.notFound().build() :
                 ResponseEntity.ok(atms);
     }
+
+    @GetMapping("/by-status/{status}")
+    public ResponseEntity<?> getByStatus(@PathVariable String status) {
+        List<Atm> atms = atmRepo.findByStatus(status);
+        return atms.isEmpty() ?
+                ResponseEntity.notFound().build() :
+                ResponseEntity.ok(atms);
+    }
 }

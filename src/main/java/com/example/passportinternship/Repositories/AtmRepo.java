@@ -11,4 +11,6 @@ public interface AtmRepo extends CrudRepository<Atm, String> {
     List<Atm> findByKioskID(String kioskID);
 
     List<Atm> findByLocation(String location);
+
+    List<Atm> findByStatus(String status);
 }
