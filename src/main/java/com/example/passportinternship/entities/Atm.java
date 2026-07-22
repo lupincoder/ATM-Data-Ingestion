@@ -14,7 +14,6 @@ public class Atm {
     @Id
     @GeneratedValue
     private Integer id;
-
     private String dccValue;
     private String timestamp;
     private String kioskID;

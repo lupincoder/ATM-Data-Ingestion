@@ -3,6 +3,7 @@ package com.example.passportinternship.job;
 import com.example.passportinternship.Repositories.AtmRepo;
 import com.example.passportinternship.entities.Atm;
 import lombok.RequiredArgsConstructor;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.job.Job;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
@@ -27,8 +28,9 @@ public class BatchConfiguration {
     private final JobRepository jobRepo;
     private final PlatformTransactionManager platformTransactionManager;
     private final AtmRepo atmRepo;
-
+    
     @Bean
+    @StepScope
     public FlatFileItemReader<Atm> itemReader() {
         FlatFileItemReader<Atm> reader = new FlatFileItemReader<>(
                 new FileSystemResource("src/main/resources/data/atmData.txt"),

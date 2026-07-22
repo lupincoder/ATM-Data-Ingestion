@@ -8,6 +8,8 @@ public class AtmProcessor implements ItemProcessor<Atm, Atm> {
 
     @Override
     public @Nullable Atm process(Atm atm) throws Exception {
+        String newDccValue = atm.getDccValue().toLowerCase();
+        atm.setDccValue(newDccValue);
         return atm;
     }
 }

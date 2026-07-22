@@ -19,7 +19,7 @@ public class ScheduleJobRunner {
     private final JobLauncher jobLauncher;
     private final Job job;
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(initialDelay = 5000)
     public void importCsvTODBJob() {
         JobParameters jobParameters = new JobParametersBuilder()
                 .addLong("startAt", System.currentTimeMillis())
