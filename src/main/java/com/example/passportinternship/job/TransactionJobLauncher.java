@@ -1,4 +1,4 @@
-package com.example.passportinternship.scheduler;
+package com.example.passportinternship.job;
 
 import org.springframework.batch.core.job.Job;
 import org.springframework.batch.core.job.parameters.InvalidJobParametersException;
@@ -9,25 +9,29 @@ import org.springframework.batch.core.launch.JobInstanceAlreadyCompleteException
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.JobRestartException;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ScheduleJobRunner {
-
+public class TransactionJobLauncher {
     private final JobLauncher jobLauncher;
     private final Job job;
 
-    public ScheduleJobRunner(JobLauncher jobLauncher, @Qualifier("runJob") Job job) {
+    public TransactionJobLauncher(JobLauncher jobLauncher, @Qualifier("runValidateJob") Job job) {
         this.jobLauncher = jobLauncher;
         this.job = job;
     }
 
-    @Scheduled(initialDelay = 5000)
-    public void importCsvTODBJob() {
+    public void runTransJob() {
         JobParameters jobParameters = new JobParametersBuilder()
                 .addLong("startAt", System.currentTimeMillis())
+                .addString("acctNum", "111111")
+                .addString("status", "processed")
+                .addString("transType", "deposit")
+                .addDouble("amount", 20.00)
+                .addString("location", "Beijing")
+                .addString("timeStamp", "2024-06-15_19:06:00")
                 .toJobParameters();
+
 
         try {
             jobLauncher.run(job, jobParameters);
@@ -39,4 +43,3 @@ public class ScheduleJobRunner {
         }
     }
 }
-
